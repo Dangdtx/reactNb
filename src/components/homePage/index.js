@@ -5,8 +5,7 @@ import Service from "@common/service"
 import Footer from "@common/footer"
 import {HomeContent} from "./styled"
 import { Carousel } from 'antd';
-import "antd/dist/antd.css"
-import banner from "@static/banner.jpg"
+import "antd/dist/antd.css" 
 export default  class HomePage extends Component {
     state = {
         goods:[],
@@ -20,24 +19,21 @@ export default  class HomePage extends Component {
         banner:[],
     }
     render() {
-        let {goods,sanBai ,list,three,four,seven,eight,five,banner} = this.state;
-        console.log( banner)
+        let {goods,sanBai ,list,three,four,seven,eight,five,banner} = this.state; 
         return ( 
             <HomeContent>  
-                <div className="banner">
-                
+                <div className="banner"> 
                     <Carousel autoplay>
-                        {
+                         {
                             banner.map((item,index)=>(
-                              <div>
-                                <h3><a href="">
-                                     <img src={"//oss.static.nubia.cn/"+item.small_image} alt=""/>
+                              <div key={index}>
+                                <h3><a href="#">
+                                     <img  src={"//oss.static.nubia.cn/"+item.small_image} alt=""/>
                                 </a></h3>
                               </div>
-                          ))  
-                         } 
-                    </Carousel>
-                   
+                            ))  
+                         }  
+                    </Carousel> 
                 </div>
                 <div className="show_big">  
                     <div className="show_left"> 
@@ -129,10 +125,9 @@ export default  class HomePage extends Component {
             </HomeContent> 
         )
     }
-    async componentDidMount(){
+    async componentDidMount(){ 
         let data =await home_api();
-        data = data.data;  
-        console.log(data,111)
+        data = data.data;   
         let banner = data["501"];
         let z20 = data["502"];
         let three = data["503"];
@@ -141,7 +136,7 @@ export default  class HomePage extends Component {
         let five = data["505"]
         let seven = data["507"];
         let eight = data["508"]
-        this.setState({ 
+        this.setState({  
             sanBai:z20,
             goods:data,
             list:list,
@@ -152,7 +147,10 @@ export default  class HomePage extends Component {
             five:five,
             banner:banner,
            
-        })
+        }) 
+        
+
     }
+  
 }
  

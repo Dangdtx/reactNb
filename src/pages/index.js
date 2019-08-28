@@ -25,12 +25,17 @@ const Mine = Loadable({
 const Login = Loadable({
     loader:()=>import("./login"),
     loading:Loading
-})
+}) 
+const Search = Loadable({
+    loader:()=>import("./search/index.js"),
+    loading:Loading
+}) 
 export {
     Home,
     Sort,
     Worth,
     Car,
     Mine,
-    Login
+    Login, 
+    Search
 }

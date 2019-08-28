@@ -3,7 +3,9 @@ import { Home,
     Worth,
     Car,
     Mine,
-    Login} from  "@pages"
+    Login, 
+    Search
+} from  "@pages"
 
     export const tabBarRoute = [
         {
@@ -52,7 +54,7 @@ import { Home,
             name:"我的",
             icon:"\ue67a"
         }
-    ]
+    ]    
     export const noTabBarRoute = [
         {
             path:"/login",
@@ -61,6 +63,15 @@ import { Home,
                 flag:false
             },
             name:"登录",
+        },
+        {
+            path:"/search",
+            component:Search,
+            meta:{
+                flag:false
+            },
+            name:"搜索",
         }
+         
     ]
     export const routeConfig = tabBarRoute.concat(noTabBarRoute)

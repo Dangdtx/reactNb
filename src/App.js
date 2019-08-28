@@ -4,7 +4,7 @@ import {routeConfig} from "@router"
 
 import BaseRoute from "@common/baseRoute"
 export default class App extends Component {
-  render() {
+  render() { 
     return (
       <Switch>
           <Redirect from="/" to="/home" exact/>
