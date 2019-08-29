@@ -3,7 +3,6 @@ import styled from "styled-components"
 export const GoodsDetail = styled.div`
     width:100%;
     height:100%;
-    // background:#999;
 `
 export const GoodsDetailImg = styled.div`
     width:100%;
@@ -116,8 +115,6 @@ export const Choiced =styled.div`
 export const GoodsDetailOverviewParameter =styled.div`
     width:100%;
    
-    background:pink;
-   
     
 
 `
@@ -125,7 +122,6 @@ export const GoodsDetailOverviewParameter =styled.div`
 export const OverviewParameterNav=styled.div`
     width:100%;
     height:0.96rem;
-    background:yellow;
     font-size:0.32rem;
     div {
         float:left;
@@ -152,11 +148,11 @@ export const Footer =styled.div`
     position:fixed;
     left:0;
     bottom:0;
-    background:pink;
     display:flex;
     flex-direction:row;
     justify-content:space-between;
     align-items:center;
+    background:#fff;
     li {
         width:16%;
         font-size:0.24rem;
@@ -186,9 +182,171 @@ export const Footer =styled.div`
 
 export const SelectedProject =styled.div`
 
-    width:2rem;
-    height:5rem;
+    width:100%;
+    height:12rem;
+    position:fixed;
+    left:0;
+    bottom:0;
+    background:#fff;
     overflow:auto;
-    background:green;
+    transition:2s;
+    // position:relative;
 
+
+
+`
+
+
+export const SelectedProjectHeader=styled.div`
+    width:100%;
+    height:2.08rem;
+    
+    position:fixed;
+    left:0;
+    top:1.3rem;
+    background:#fff;
+    padding:0 0.384rem;
+    color:#000;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    padding:0.096rem 0;
+    img {
+        width:2.02rem;
+        height: 1.87rem;
+    }
+    .title {
+        div:nth-of-type(1) {
+            span:nth-of-type(1){
+                font-size:0.352rem;
+                color:#FF4D4D;
+                margin-right:0.2rem;
+        }
+        pan:nth-of-type(2){
+            font-size:0.256rem;
+            color:#999999;
+    }
+        }
+        div:nth-of-type(2) {
+            font-size:0.272rem;
+            color:#464646;
+        }
+    }
+
+
+`
+export const SelectedProjectBody =styled.div`
+    
+    padding:2.08rem 0.384rem 0;
+
+
+
+`
+
+export const SelectedProjectColor=styled.div`
+    margin-top:0.5rem;
+    .title {
+        display:block;
+         font-size:0.336rem;
+        color:#323232;
+        margin-bottom:0.192rem;
+    }
+    div {
+        display:inline-block;
+        font-size:0.24rem;
+        color:rgb(112,112,112);
+        padding:0.096rem 0.6rem;
+        border:1px solid rgb(112,112,112);
+        margin:0 0.16rem 0.16rem 0;
+        border-radius:0.1rem;
+
+    }
+   
+
+`
+export const SelectedProjectSpecifications=styled.div`
+margin-top:0.5rem;
+
+.title {
+    display:block;
+     font-size:0.336rem;
+    color:#323232;
+    margin-bottom:0.192rem;
+}
+
+div {
+    display:inline-block;
+    font-size:0.24rem;
+    color:rgb(112,112,112);
+    padding:0.096rem 0.224rem;
+    margin:0 0.16rem 0.16rem 0;
+    border:1px solid rgb(112,112,112);
+    border-radius:0.1rem;
+
+}
+`
+export const SelectedProjectsuit=styled.div`
+margin-top:0.5rem;
+
+.title {
+    display:block;
+     font-size:0.336rem;
+    color:#323232;
+    margin-bottom:0.192rem;
+}
+div {
+    width:100%;
+    padding:0.096rem 0.24rem;
+    border:1px solid rgb(112,112,112);
+    border-radius:0.1rem;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    font-size:0.24rem;
+    color:#717171;
+    margin-bottom:0.2rem;
+
+}
+`
+export const SelectedProjectService=styled.div`
+margin-top:0.5rem;
+
+.title {
+    display:block;
+     font-size:0.336rem;
+    color:#323232;
+    margin-bottom:0.192rem;
+}
+
+`
+export const SelectedProjectinstallment=styled.div`
+margin-top:0.5rem;
+
+.title {
+    display:block;
+     font-size:0.336rem;
+    color:#323232;
+    margin-bottom:0.192rem;
+}
+`
+export const SelectedProjectNum=styled.div`
+margin-top:0.5rem;
+
+.title {
+    display:block;
+     font-size:0.336rem;
+    color:#323232;
+    margin-bottom:0.192rem;
+}
+`
+export const SelectedProjectButton=styled.div`
+margin-top:0.5rem;
+
+.title {
+    display:block;
+     font-size:0.336rem;
+    color:#323232;
+    margin-bottom:0.192rem;
+}
 `

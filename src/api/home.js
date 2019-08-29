@@ -29,5 +29,10 @@ export const goodsDetail_api = (productId=840,specId=1177,source=8) => http.get(
 
 
 
-//https://m.nubia.com/cart/query?source=1
-export const shopping_list_api = (source=1)=>http.get("/cart/query",{source})
+
+
+//  https://m.nubia.com/show/cart/hotProduct/query
+
+export const list_api =(ids=1106)=>http.post("/show/cart/hotProduct/query",{ids})
+
+

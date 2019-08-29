@@ -1,14 +1,14 @@
-import React, { Component } from "react"
-import { SelectedProject,Footer, Parameter, Overview, OverviewParameterNav, GoodsDetailOverviewParameter, Choiced, Sales, GoodsDetailSales, GoodsDetail, GoodsDetailImg, GoodsDetailInf } from "./styled"
+import React, { PureComponent } from "react"
+import {SelectedProjectBody,SelectedProjectButton,SelectedProjectNum,SelectedProjectinstallment,SelectedProjectService,SelectedProjectsuit,SelectedProjectSpecifications,SelectedProjectColor,SelectedProjectHeader, SelectedProject,Footer, Parameter, Overview, OverviewParameterNav, GoodsDetailOverviewParameter, Choiced, Sales, GoodsDetailSales, GoodsDetail, GoodsDetailImg, GoodsDetailInf } from "./styled"
 import logo2 from "@static/2.png"
-import { goodsDetail_api } from "@api/home"
-export default class GoodsDetailWrapper extends Component {
+import {list_api, goodsDetail_api } from "@api/home"
+export default class GoodsDetailWrapper extends PureComponent {
     constructor() {
         super();
         this.state = {
             msg: {},
             lgs:[],
-            flag:true
+            flag:false
         }
     }
     render() {
@@ -25,26 +25,22 @@ export default class GoodsDetailWrapper extends Component {
         console.log(tibel,"111111111111111saamsg")
       
         return (
+         
             <GoodsDetail>
-                <GoodsDetailImg>
-                    <img src={logo2}></img>
+                <GoodsDetailImg  onClick={this.clickOtherHandler.bind(this)}>
+                    <img src={logo2} alt=""></img>
                 </GoodsDetailImg>
 
 
                 <GoodsDetailInf>
-                    
-                      
+                    <h2>{tibel?tibel.id:""}</h2>
                            <div>
-                                
                                 <div>6+128GB降至2799、8+128GB降至2999、12+256GB降至3799</div>
                                 <div>
                                 <span>￥2999.00元</span>
                                 <span>￥3499.00元</span>
                                 </div>
                            </div>
-                      
-                    
-
                 </GoodsDetailInf>
 
                 <GoodsDetailSales>
@@ -83,8 +79,101 @@ export default class GoodsDetailWrapper extends Component {
                     </Parameter>
 
                     <SelectedProject style={{display:flag?'block':'none'}}>
-                    
-                    
+                        <SelectedProjectHeader>
+                            <img src = {logo2} alt = ""></img>
+                            <div className="title">
+                                <div>
+                                    <span>￥2599.00</span> 
+                                    <span>￥2799.00</span> 
+                                </div>
+                                <div>红魔3 玄铁黑 6GB+128GB</div>
+                            </div>
+                        
+                        </SelectedProjectHeader>
+                        <SelectedProjectBody>
+                      
+
+                        <SelectedProjectColor>
+                            <span className="title">颜色</span>
+                            <div>玄铁黑</div>
+                            <div>赤焰红</div>
+                            <div>战地迷彩版</div>
+                            <div>红蓝竞技版</div>
+                            <div>迷彩钢枪版（套装）</div>
+                            
+                        </SelectedProjectColor>
+
+                        <SelectedProjectSpecifications>
+                            <span className="title">规格</span>
+
+                            <div>12GB+258GB</div>
+                            <div>12GB+258GB</div>
+                            <div>12GB+258GB</div>
+
+                        </SelectedProjectSpecifications>
+                        <SelectedProjectsuit>
+                            <span className="title">套装</span>
+
+                                <div>
+                                    <span>手机套装</span>
+                                    <span>¥2999.00，省¥428.00</span>
+                                </div>
+                                <div>
+                                    <span>能量套装</span>
+                                    <span>¥2999.00，省¥428.00</span>
+
+                                </div>
+                                <div>
+                                    <span>仅手机</span>
+                                </div>
+                                
+                        </SelectedProjectsuit>
+                        <SelectedProjectService>
+                            <span className="title">服务(可选）</span>
+                            <div>
+                                <span>红魔3玄铁黑（6G+128G）屏碎宝（半年内保修1次）</span>
+                                <span>99.00元/年</span>
+                            </div>
+                            <div>
+                                <span>红魔3玄铁黑（6G+128G）屏碎宝（半年内保修1次）</span>
+                                <span>99.00元/年</span>
+                            </div>
+
+                        
+                        
+                        
+                        </SelectedProjectService>
+                        <SelectedProjectinstallment>
+                        
+                        <span className="title">分期</span>
+                            <div>
+                                <span>￥1005.27×3期</span>
+                                <span>含￥67.80手续费</span>
+                            </div>
+                            <div>
+                                <span>￥1005.27×3期</span>
+                                <span>含￥67.80手续费</span>
+                            </div>
+                        
+                        
+                        </SelectedProjectinstallment>
+                        <SelectedProjectNum>
+                            <span className="title">数量</span>
+                            <div>-</div>
+                            <div>1</div>        
+                            <div>+</div>        
+
+                        </SelectedProjectNum>
+                        <SelectedProjectButton>
+                                确定
+                        
+                        </SelectedProjectButton>
+
+
+                          
+                        
+                        
+                        </SelectedProjectBody>
                     
                     </SelectedProject>
 
@@ -114,6 +203,8 @@ export default class GoodsDetailWrapper extends Component {
     }
 
     async componentDidMount() {
+        let ggg=await list_api();
+        console.log(ggg,"ggg")
         let value = await goodsDetail_api();
         let data = value.data
         this.setState({
@@ -123,9 +214,15 @@ export default class GoodsDetailWrapper extends Component {
     }
 
     clickHandler(e) {
-        let bool = this.state.flag
+        e.stopPropagation();
         this.setState({
-            flag:!bool
+            flag:true
+        })
+    }
+    clickOtherHandler(e) {
+        e.stopPropagation();
+        this.setState({
+            flag:false
         })
     }
 }
