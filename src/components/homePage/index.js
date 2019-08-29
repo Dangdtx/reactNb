@@ -5,7 +5,13 @@ import Service from "@common/service"
 import Footer from "@common/footer"
 import {HomeContent} from "./styled"
 import { Carousel } from 'antd';
+<<<<<<< HEAD
 import "antd/dist/antd.css" 
+=======
+import "antd/dist/antd.css"
+import {Link} from "react-router-dom"
+import banner from "@static/banner.jpg"
+>>>>>>> yang
 export default  class HomePage extends Component {
     state = {
         goods:[],
@@ -88,7 +94,8 @@ export default  class HomePage extends Component {
                     </div>
                 </div> 
                 <div className="more">
-                      <a href="#">查看更多手机 ></a>  
+                
+                      <Link to="/youke">查看更多手机 ></Link>  
                 </div> 
                 <div className="new_list">
                     <p className="hotSex">精选配件</p>

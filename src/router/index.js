@@ -3,8 +3,13 @@ import { Home,
     Worth,
     Car,
     Mine,
+<<<<<<< HEAD
     Login, 
     Search
+=======
+    Login,
+    Youke
+>>>>>>> yang
 } from  "@pages"
 
     export const tabBarRoute = [
@@ -65,12 +70,23 @@ import { Home,
             name:"登录",
         },
         {
+<<<<<<< HEAD
             path:"/search",
             component:Search,
             meta:{
                 flag:false
             },
             name:"搜索",
+=======
+            path:"/youke",
+            component:Youke,
+            meta:{
+                flag:false,
+                auth:false
+            },
+            name:"youke",
+            
+>>>>>>> yang
         }
          
     ]

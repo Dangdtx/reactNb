@@ -25,17 +25,30 @@ const Mine = Loadable({
 const Login = Loadable({
     loader:()=>import("./login"),
     loading:Loading
+<<<<<<< HEAD
 }) 
 const Search = Loadable({
     loader:()=>import("./search/index.js"),
     loading:Loading
 }) 
+=======
+})
+const Youke = Loadable({
+    loader:()=>import("./youke"),
+    loading:Loading
+})
+>>>>>>> yang
 export {
     Home,
     Sort,
     Worth,
     Car,
     Mine,
+<<<<<<< HEAD
     Login, 
     Search
+=======
+    Login,
+    Youke 
+>>>>>>> yang
 }
