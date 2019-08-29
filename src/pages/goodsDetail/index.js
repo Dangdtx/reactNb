@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react"
 import {SelectedProjectBody,SelectedProjectButton,SelectedProjectNum,SelectedProjectinstallment,SelectedProjectService,SelectedProjectsuit,SelectedProjectSpecifications,SelectedProjectColor,SelectedProjectHeader, SelectedProject,Footer, Parameter, Overview, OverviewParameterNav, GoodsDetailOverviewParameter, Choiced, Sales, GoodsDetailSales, GoodsDetail, GoodsDetailImg, GoodsDetailInf } from "./styled"
 import logo2 from "@static/2.png"
-import {list_api, goodsDetail_api } from "@api/home"
+import { goodsDetail_api } from "@api/home"
 export default class GoodsDetailWrapper extends PureComponent {
     constructor() {
         super();
@@ -203,8 +203,7 @@ export default class GoodsDetailWrapper extends PureComponent {
     }
 
     async componentDidMount() {
-        let ggg=await list_api();
-        console.log(ggg,"ggg")
+       
         let value = await goodsDetail_api();
         let data = value.data
         this.setState({

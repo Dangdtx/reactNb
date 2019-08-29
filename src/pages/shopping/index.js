@@ -2,7 +2,7 @@ import React,{Component} from "react"
 import logo1 from "@static/3.png"
 import logo4 from "@static/4.png"
 
-import {list_api} from "@api/home"
+
 import {RecommonedList,Recommoned,PriceTotal,ShoppingWrapperList,ListHeader,ShoppingWrapper} from "./styled"
 export default class ShoppingList extends Component {
     render() {
@@ -68,11 +68,7 @@ export default class ShoppingList extends Component {
         )
     }
 
-    async componentDidMount() {
-        let ggg=await list_api();
-        console.log(ggg,"ggg")
-       
-    }
+ 
 
     
 }

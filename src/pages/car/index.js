@@ -1,11 +1,18 @@
-import React,{Component} from "react"
+import React, { Component } from "react"
 import logo1 from "@static/3.png"
 import logo4 from "@static/4.png"
 
-import {list_api} from "@api/home"
-import {RecommonedList,Recommoned,PriceTotal,ShoppingWrapperList,ListHeader,ShoppingWrapper} from "./styled"
+import { list_api } from "@api/home"
+import { RecommonedList, Recommoned, PriceTotal, ShoppingWrapperList, ListHeader, ShoppingWrapper } from "./styled"
 export default class ShoppingList extends Component {
+    constructor() {
+        super();
+        this.state = {
+            msg: []
+        }
+    }
     render() {
+        let { msg } = this.state;
         return (
             <ShoppingWrapper>
                 <ListHeader>
@@ -29,14 +36,14 @@ export default class ShoppingList extends Component {
                             <div className="shoppingListInfPriceTotal">
                                 <span>小计:</span>￥<span>2999.00</span>元
                             </div>
-                            
+
                         </div>
                     </div>
-                
+
                 </ShoppingWrapperList>
-            
+
                 <PriceTotal>
-                
+
                     <div>金额合计</div>
                     <div>￥<span>2999</span>元</div>
                 </PriceTotal>
@@ -45,34 +52,41 @@ export default class ShoppingList extends Component {
 
 
                 <RecommonedList>
-                
-                    <li>
-                        <img src={logo4} alt=""></img>
-                        <div className="RecommonedListTitle">律音耳机（新版）</div>
-                        
-                        <div className="RecommonedListPrice">
-                        <span>￥69</span>
-                        <i className="iconfont">&#xe603;
-                        </i>
-                        </div>
-                    </li>
+
+
+                    {
+
+                        msg.map((item, index) => (
+                            <li key={index}>
+                                <img src={"http://oss.static.nubia.cn/"+item.imageurl} alt=""></img>
+                                <div className="RecommonedListTitle">{item.product_name}</div>
+                                <div className="RecommonedListPrice">
+                                    <span>￥{item.price}</span>
+                                    <i className="iconfont">&#xe603;</i>
+                                </div>
+                            </li>
+                        ))
+                    }
 
 
 
-                   
+
+
                 </RecommonedList>
             </ShoppingWrapper>
 
 
-            
+
         )
     }
 
     async componentDidMount() {
-        let ggg=await list_api();
-        console.log(ggg,"ggg")
-       
+        let value1 = await list_api();
+        let data = value1.data.hot_products;
+        console.log(data)
+        this.setState({
+            msg: data
+        })
     }
 
-    
 }

@@ -144,8 +144,7 @@ export const Recommoned = styled.div`
 export const RecommonedList = styled.div`
     width:100%;
     display:flex;
-    flex-direction:row;
-    flex-wrap：wrap;
+    flex-wrap:wrap;
     
     
     li{
@@ -155,7 +154,6 @@ export const RecommonedList = styled.div`
         border-bottom:1px solid #999;
     
         img {
-            
             width:2.84rem;
             height:2.84rem;
             margin:0.35rem;

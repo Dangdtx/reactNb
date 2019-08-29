@@ -7,7 +7,9 @@ export const hotSearch_api =( )=>http.get( "show/search/hot_search")
 // https://m.nubia.com/show/search/hot_search
 // https://m.nubia.com/show/page/block?pageType=5
 // 关键字搜索
+
 //https://m.nubia.com/show/search/normal_search?product_name=a&page_size=10&page_num=1
+
 
 
 
@@ -36,3 +38,11 @@ export const goodsDetail_api = (productId=840,specId=1177,source=8) => http.get(
 export const list_api =(ids=1106)=>http.post("/show/cart/hotProduct/query",{ids})
 
 
+
+export const searchKey_api = (key)=>http.get("show/search/normal_search?product_name="+ key +"&page_size=10&page_num=1" ) 
+//https://m.nubia.com/show/search/normal_search?product_name=a&page_size=10&page_num=1
+
+// https://m.nubia.com/show/page/searchPhone?pageNum=3&pageSize=10&cateId=17&type=0
+// https://m.nubia.com/show/page/searchPhone?pageNum=2&pageSize=10&cateId=17&type=0
+export const Cate = (pageNum=1,pageSize=10,cateId=17,type=0)=>http.get("/show/page/searchPhone",{pageNum,pageSize,cateId,type})
+// export const Cate = ()=>http.get("/show/page/searchPhone?pageNum=3&pageSize=10&cateId=17&type=0")

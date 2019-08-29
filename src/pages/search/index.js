@@ -4,9 +4,12 @@ import {connect} from "react-redux"
 import {Page} from "@common/commonStyled"
 import {mapStateToProps, mapDispatchToProps} from "./connect"
  class Search extends Component {
+     state={
+        
+     }
     render() {
-        let {hotGoods,flag} = this.props
-        console.log(hotGoods,flag)
+        let {hotGoods,flag,inputVal} = this.props
+        console.log(this.props)
         return (
             <HeadersWrapper>
                 <div className="header">
@@ -15,7 +18,7 @@ import {mapStateToProps, mapDispatchToProps} from "./connect"
                     </div>
                     <div className="header_center"  >
                         <span className="iconfont">&#xe60b;</span>
-                        <input type="text"   placeholder="红星照耀中国" />
+                        <input type="text"  value={inputVal} onChange={this.props.handleInputClick.bind(this)} placeholder="红星照耀中国" />
                     </div>
                     <div className="header_right">
                         <a href="#">
@@ -23,6 +26,7 @@ import {mapStateToProps, mapDispatchToProps} from "./connect"
                         </a>
                     </div>
                 </div>
+
                 <div className="hot" style={ {display:flag?'block':'none'}} >
                     <p>热门搜索</p>
                     <ul>
@@ -39,10 +43,13 @@ import {mapStateToProps, mapDispatchToProps} from "./connect"
 
         )
     }
-componentDidMount(){
-    this.props.handleHotSearch();
+componentDidMount(){ 
+    this.props.handleHotSearch();  
 }
-
+componentWillReceiveProps(){
+    let val = this.props.inputVal;
+    this.props.handleSearchList(val)
+}
 
 
 

@@ -24,6 +24,7 @@ const get = (url,data)=>{
 const post = (url,data)=>{
 
     let result = fetchPro(url,{
+        method:"post",
         credentials:"include",
         headers:{
             "content-type":"application/x-www-form-urlencoded"

@@ -2,12 +2,14 @@ import { Home,
     Sort,
     Worth,
     Car,
-    Mine,
+    Mine, 
     Login, 
     Search,
     BookDetail,
 GoodsDetail,
-ShoppingList
+ShoppingList,
+    Youke 
+
 } from  "@pages"
 
     export const tabBarRoute = [
@@ -67,7 +69,7 @@ ShoppingList
             },
             name:"登录",
         },
-        {
+        { 
             path:"/search",
             component:Search,
             meta:{
@@ -76,6 +78,7 @@ ShoppingList
             name:"搜索",
         },
         {
+
             path:"/bookDetail",
             component:BookDetail,
             meta:{
@@ -98,7 +101,18 @@ ShoppingList
             meta:{
                 flag:false
             },
-            name:"购物车",
+            name:"购物车"
+        },
+
+        {
+            path:"/youke",
+            component:Youke,
+            meta:{
+                flag:false,
+                auth:false
+            },
+            name:"youke"
+             
         }
          
     ]
