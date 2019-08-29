@@ -2,14 +2,10 @@ import { Home,
     Sort,
     Worth,
     Car,
-    Mine,
-<<<<<<< HEAD
+    Mine, 
     Login, 
-    Search
-=======
-    Login,
-    Youke
->>>>>>> yang
+    Search ,
+    Youke 
 } from  "@pages"
 
     export const tabBarRoute = [
@@ -69,15 +65,15 @@ import { Home,
             },
             name:"登录",
         },
-        {
-<<<<<<< HEAD
+        { 
             path:"/search",
             component:Search,
             meta:{
                 flag:false
             },
             name:"搜索",
-=======
+        },
+        {
             path:"/youke",
             component:Youke,
             meta:{
@@ -85,8 +81,7 @@ import { Home,
                 auth:false
             },
             name:"youke",
-            
->>>>>>> yang
+             
         }
          
     ]

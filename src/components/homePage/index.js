@@ -5,13 +5,9 @@ import Service from "@common/service"
 import Footer from "@common/footer"
 import {HomeContent} from "./styled"
 import { Carousel } from 'antd';
-<<<<<<< HEAD
-import "antd/dist/antd.css" 
-=======
+ 
 import "antd/dist/antd.css"
-import {Link} from "react-router-dom"
-import banner from "@static/banner.jpg"
->>>>>>> yang
+import {Link} from "react-router-dom" 
 export default  class HomePage extends Component {
     state = {
         goods:[],
