@@ -26,11 +26,16 @@ const Login = Loadable({
     loader:()=>import("./login"),
     loading:Loading
 })
+const Youke = Loadable({
+    loader:()=>import("./youke"),
+    loading:Loading
+})
 export {
     Home,
     Sort,
     Worth,
     Car,
     Mine,
-    Login
+    Login,
+    Youke 
 }

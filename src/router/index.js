@@ -3,7 +3,9 @@ import { Home,
     Worth,
     Car,
     Mine,
-    Login} from  "@pages"
+    Login,
+    Youke
+} from  "@pages"
 
     export const tabBarRoute = [
         {
@@ -61,6 +63,16 @@ import { Home,
                 flag:false
             },
             name:"登录",
+        },
+        {
+            path:"/youke",
+            component:Youke,
+            meta:{
+                flag:false,
+                auth:false
+            },
+            name:"youke",
+            
         }
     ]
     export const routeConfig = tabBarRoute.concat(noTabBarRoute)
