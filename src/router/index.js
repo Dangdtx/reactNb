@@ -4,7 +4,10 @@ import { Home,
     Car,
     Mine,
     Login, 
-    Search
+    Search,
+    BookDetail,
+GoodsDetail,
+ShoppingList
 } from  "@pages"
 
     export const tabBarRoute = [
@@ -71,6 +74,31 @@ import { Home,
                 flag:false
             },
             name:"搜索",
+        },
+        {
+            path:"/bookDetail",
+            component:BookDetail,
+            meta:{
+                flag:false
+            },
+            name:"详情",
+        },
+        
+        {
+            path:"/goodsDetail/:productId/:id",
+            component:GoodsDetail,
+            meta:{
+                flag:false
+            },
+            name:"详情",
+        },
+        {
+            path:"/shopping",
+            component:ShoppingList,
+            meta:{
+                flag:false
+            },
+            name:"购物车",
         }
          
     ]

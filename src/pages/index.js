@@ -30,6 +30,19 @@ const Search = Loadable({
     loader:()=>import("./search/index.js"),
     loading:Loading
 }) 
+const BookDetail =Loadable({
+    loader:()=>import("./bookDetail"),
+    loading:Loading
+})
+
+const GoodsDetail =Loadable({
+    loader:()=>import("./goodsDetail"),
+    loading:Loading
+})
+const ShoppingList =Loadable({
+    loader:()=>import("./shopping"),
+    loading:Loading
+    })
 export {
     Home,
     Sort,
@@ -37,5 +50,8 @@ export {
     Car,
     Mine,
     Login, 
-    Search
+    Search,
+    BookDetail,
+    GoodsDetail,
+    ShoppingList
 }
