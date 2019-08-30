@@ -1,5 +1,5 @@
 import {createAction} from "redux-actions"
-import {hotSearch_api,searchKey_api} from "@api/home"
+import {hotSearch_api,searchKey_api,goodsDetail_api} from "@api/home"
 
 // 同步的请求
 export const hotSearchAction = createAction("SEARCH_TYPES",(val)=>val)
@@ -29,3 +29,4 @@ export const keySearchListAsyncAction = (val)=>{
        // dispatch(keySearchListAction(data))
     }
 }
+ 

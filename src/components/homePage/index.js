@@ -4,11 +4,10 @@ import {home_api} from "@api/home"
 import Service from "@common/service"
 import Footer from "@common/footer"
 import {HomeContent} from "./styled"
-import { Carousel } from 'antd';
- 
-import "antd/dist/antd.css"
-import {Link} from "react-router-dom" 
-export default  class HomePage extends Component {
+import { Carousel } from 'antd'; 
+import "antd/dist/antd.css" 
+import {Link,withRouter}   from "react-router-dom" 
+   class HomePage extends Component {
     state = {
         goods:[],
         sanBai:[],
@@ -29,9 +28,9 @@ export default  class HomePage extends Component {
                          {
                             banner.map((item,index)=>(
                               <div key={index}>
-                                <h3><a href="#">
+                                <h3><Link key={index} to={"/goodsDetail/"+item.link} >
                                      <img  src={"//oss.static.nubia.cn/"+item.small_image} alt=""/>
-                                </a></h3>
+                                </Link></h3>
                               </div>
                             ))  
                          }  
@@ -41,7 +40,7 @@ export default  class HomePage extends Component {
                     <div className="show_left"> 
                         {
                             sanBai.map((item,index)=>(
-                                 <a href="#" key={index}><img src={"//oss.static.nubia.cn/"+item.small_image}  alt=""/></a>
+                               <Link key={index} to={"/goodsDetail/"+ item.product_id+"/"+item.block_products.spec_id} >  <img src={"//oss.static.nubia.cn/"+item.small_image}  alt=""/> </Link> 
                             ))
                         }
                        
@@ -73,7 +72,7 @@ export default  class HomePage extends Component {
                         <ul className="father">
                         {
                             list.map((item,index)=>(
-                                <li key={index}><a href="#">
+                                <li key={index}><Link key={index} to={"/goodsDetail/s/"+item.block_products.spec_id} >
                                     <img src={"//oss.static.nubia.cn/"+ item.small_image} alt=""/>
                                     <div className="phone_name">
                                             <h3>{item.title}</h3>
@@ -83,7 +82,7 @@ export default  class HomePage extends Component {
                                                 <del>{item.block_products.original_price}</del>
                                             </div>
                                     </div>
-                                </a></li>  
+                                </Link></li>  
                             ))
                         }  
                         </ul>
@@ -106,7 +105,7 @@ export default  class HomePage extends Component {
                         <ul className="father">
                         {
                             five.map((item,index)=>(
-                                <li key={index}><a href="#">
+                                <li key={index}><Link key={index} to={"/goodsDetail/s/"+item.block_products.spec_id} >
                                     <img src={"//oss.static.nubia.cn/"+ item.small_image} alt=""/>
                                     <div className="phone_name">
                                             <h3>{item.title}</h3> 
@@ -114,7 +113,7 @@ export default  class HomePage extends Component {
                                                 <span>￥{item.block_products.price}</span> 
                                             </div>
                                     </div>
-                                </a></li>  
+                                </Link></li>  
                             ))
                         }  
                         </ul>
@@ -130,7 +129,8 @@ export default  class HomePage extends Component {
     }
     async componentDidMount(){ 
         let data =await home_api();
-        data = data.data;   
+        data = data.data;  
+        console.log(data) 
         let banner = data["501"];
         let z20 = data["502"];
         let three = data["503"];
@@ -156,4 +156,4 @@ export default  class HomePage extends Component {
     }
   
 }
- 
+export default  withRouter(HomePage)
