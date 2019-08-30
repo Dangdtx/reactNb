@@ -46,3 +46,7 @@ export const searchKey_api = (key)=>http.get("show/search/normal_search?product_
 // https://m.nubia.com/show/page/searchPhone?pageNum=2&pageSize=10&cateId=17&type=0
 export const Cate = (pageNum=1,pageSize=10,cateId=17,type=0)=>http.get("/show/page/searchPhone",{pageNum,pageSize,cateId,type})
 // export const Cate = ()=>http.get("/show/page/searchPhone?pageNum=3&pageSize=10&cateId=17&type=0")
+
+
+export const shopping_detail_api = (productId=840,specId=1175,source=8,flag=0)=>http.get("/show/product/getExt",{productId,specId,source,flag})
+// https://m.nubia.com/show/product/getExt?productId=840&specId=1175&source=8&flag=0

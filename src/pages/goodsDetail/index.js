@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react"
 import {SelectedProjectBody,SelectedProjectButton,SelectedProjectNum,SelectedProjectinstallment,SelectedProjectService,SelectedProjectsuit,SelectedProjectSpecifications,SelectedProjectColor,SelectedProjectHeader, SelectedProject,Footer, Parameter, Overview, OverviewParameterNav, GoodsDetailOverviewParameter, Choiced, Sales, GoodsDetailSales, GoodsDetail, GoodsDetailImg, GoodsDetailInf } from "./styled"
 import logo2 from "@static/2.png"
-import { goodsDetail_api } from "@api/home"
+import { goodsDetail_api,shopping_detail_api } from "@api/home"
 export default class GoodsDetailWrapper extends PureComponent {
     constructor() {
         super();
@@ -14,6 +14,7 @@ export default class GoodsDetailWrapper extends PureComponent {
     render() {
         let {msg,lgs,flag} = this.state;
         let id = this.props.match.params.id
+       
         
         let num;
         lgs.forEach((item,index)=>{
@@ -23,7 +24,7 @@ export default class GoodsDetailWrapper extends PureComponent {
                     })
         let tibel=lgs[num]
         console.log(tibel,"111111111111111saamsg")
-      
+       
         return (
          
             <GoodsDetail>
@@ -33,12 +34,12 @@ export default class GoodsDetailWrapper extends PureComponent {
 
 
                 <GoodsDetailInf>
-                    <h2>{tibel?tibel.id:""}</h2>
+                    <h2>{msg?msg.product_name:""} {tibel?tibel.color_name:''}{tibel?tibel.spec_value:''}</h2>
                            <div>
-                                <div>6+128GB降至2799、8+128GB降至2999、12+256GB降至3799</div>
+                                <div>{tibel?tibel.sale_point:''}</div>
                                 <div>
-                                <span>￥2999.00元</span>
-                                <span>￥3499.00元</span>
+                                <span>￥{tibel?tibel.price:''}元</span>
+                                <span>￥{tibel?tibel.origin_price:''}元</span>
                                 </div>
                            </div>
                 </GoodsDetailInf>
@@ -48,7 +49,8 @@ export default class GoodsDetailWrapper extends PureComponent {
                         <div>促销</div>
                         <ul>
                             <li>
-                                <span>分期</span><span>享受花呗3期,12期分期</span>
+                               
+                                <span>分期</span><span>享受花呗3期,6期,12期分期</span>
                             </li>
                             <li>
                                 <span>积分</span><span>购买即赠积分，积分可抵现</span>
@@ -95,20 +97,24 @@ export default class GoodsDetailWrapper extends PureComponent {
 
                         <SelectedProjectColor>
                             <span className="title">颜色</span>
-                            <div>玄铁黑</div>
-                            <div>赤焰红</div>
-                            <div>战地迷彩版</div>
-                            <div>红蓝竞技版</div>
-                            <div>迷彩钢枪版（套装）</div>
+
+                            {
+
+                                lgs.map((item,index)=>(
+                                    <div key={index}>{item.color_name}</div>
+                                ))
+                            }
+                           
                             
                         </SelectedProjectColor>
 
                         <SelectedProjectSpecifications>
                             <span className="title">规格</span>
-
-                            <div>12GB+258GB</div>
-                            <div>12GB+258GB</div>
-                            <div>12GB+258GB</div>
+                            {
+                                lgs.map((item,index)=>(
+                                    <div key={index}>{item.spec_value}</div>
+                                ))
+                            }
 
                         </SelectedProjectSpecifications>
                         <SelectedProjectsuit>
@@ -205,6 +211,7 @@ export default class GoodsDetailWrapper extends PureComponent {
     async componentDidMount() {
        
         let value = await goodsDetail_api();
+        let goods_list= await shopping_detail_api();
         let data = value.data
         this.setState({
             msg: data,
