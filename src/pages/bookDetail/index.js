@@ -10,12 +10,10 @@ export default class BookDetail extends Component {
     }
     render() {
         let {msg} = this.state;
-        console.log(msg,"111111aaaaa")
+        console.log(this ,555555555555) 
         return (
             <Fragment>
-            
-            
-           
+              
             <DetailWrapper>
                 <Imgscroll>
                     <img src="http://img3m0.ddimg.cn/64/6/23990140-1_e_7.jpg" alt=""></img>
@@ -154,12 +152,10 @@ export default class BookDetail extends Component {
     }
 
     async componentDidMount() {
-        let data = await book_name_api();
-
-
+        let data = await book_name_api(); 
         this.setState({
             msg:data
-        })
-        console.log(data, "11111")
+        }) 
+        console.log(this.props.match.params,555555555555) 
     }
 }

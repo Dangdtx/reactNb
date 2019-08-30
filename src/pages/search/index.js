@@ -43,15 +43,15 @@ import {mapStateToProps, mapDispatchToProps} from "./connect"
 
         )
     }
-componentDidMount(){ 
-    this.props.handleHotSearch();  
-}
-componentWillReceiveProps(){
-    let val = this.props.inputVal;
-    this.props.handleSearchList(val)
-}
+    componentDidMount(){ 
+        this.props.handleHotSearch();  
+    }
+    componentWillReceiveProps(){
+        let val = this.props.inputVal;
+        this.props.handleSearchList(val)
+    }
 
 
 
-}
+    }
 export default connect(mapStateToProps,mapDispatchToProps)(Search)

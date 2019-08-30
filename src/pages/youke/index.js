@@ -44,33 +44,32 @@ export default class Youke extends Component {
                             </li>
                         </ul>
                     </div>
-                    {
-                        weekGoods.map((item, index) => {
-                            return <div className="wrap" key={index}>
-                                <ul>
-                                    <li className="phone-item">
-                                        <a>
-                                            <div className="phone_cell">
-                                                <img src={'//oss.static.nubia.cn/' + item.image} />
-                                            </div>
-                                            <div className="phone_desc">
-                                                <div className="title">
-                                                    <h3>
-                                                        {item.product_name + " " + item.color_name + " " + item.spec_value}
-                                                    </h3>
+                            {
+                                weekGoods.map((item, index) => {
+                                    return <Link to={"/goodsDetail/"+item.id +"/" + item.sid} className="wrap" key={index}>
+                                        <ul>
+                                            <li className="phone-item">
+                                                
+                                                    <div className="phone_cell">
+                                                        <img src={'//oss.static.nubia.cn/' + item.image} />
+                                                    </div>
+                                                    <div className="phone_desc">
+                                                        <div className="title">
+                                                            <h3>
+                                                                {item.product_name + " " + item.color_name + " " + item.spec_value}
+                                                            </h3>
 
-                                                </div>
-                                                <div className="price">
-                                                    <h4>{"￥" + item.origin_price}</h4>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        })
+                                                        </div>
+                                                        <div className="price">
+                                                            <h4>{"￥" + item.origin_price}</h4>
+                                                        </div>
+                                                    </div> 
+                                            </li>
+                                        </ul>
+                                    </Link>
+                                })
 
-                    }
+                            }
                     <div className="right" style={{display:flag?"block":"none"}}>
                     <div className="left_in" onClick={this.handleClick1.bind(this)}></div>
                     <div className="right_in">
@@ -110,7 +109,7 @@ export default class Youke extends Component {
                        {
                         Goods.map((it, index1) => {
                             
-                            return  <li key={index1}>
+                            return  <li key={index1}><Link to={"/goodsDetail/"+it.id +"/" + it.sid}>
                         <div className="box2">
                         <img src={'//oss.static.nubia.cn/' + it.image}/>
                         </div>
@@ -125,7 +124,8 @@ export default class Youke extends Component {
                              <span>{"￥" + it.origin_price}</span>
                             </div>
                         </div>
-                        </li>
+                      </Link>  </li>
+                        
                     })
                 }
                        </ul>

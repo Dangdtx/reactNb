@@ -26,7 +26,7 @@ export const book_name_api = ()=>http.get("/h5ajax.php?action=get_product_info&p
 export const sort_api = () => http.get("/show/page/fetch/cateInfos")
 
 // https://m.nubia.com/show/product/get?productId=840&specId=1177&source=8
-export const goodsDetail_api = (productId=840,specId=1177,source=8) => http.get("/show/product/get",{productId,specId,source})
+export const goodsDetail_api = (productId ,id,source=8) => http.get("/show/product/get",{productId,id,source})
 
 
 

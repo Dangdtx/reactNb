@@ -209,9 +209,8 @@ export default class GoodsDetailWrapper extends PureComponent {
     }
 
     async componentDidMount() {
-       
-        let value = await goodsDetail_api();
-        let goods_list= await shopping_detail_api();
+       let {productId,id} = this.props.match.params
+        let value = await goodsDetail_api(productId,id);
         let data = value.data
         this.setState({
             msg: data,
