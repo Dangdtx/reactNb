@@ -15,6 +15,7 @@ export const keySearchAction = createAction("KEY_TYPES",(val)=>val)
 export const keySearchAsyncAction = (val)=>{
     return async (dispatch)=>{ 
         let data = await searchKey_api(val); 
+        console.log(data,"hotSearch")
         dispatch(keySearchAction(val,data))
     }
 }
@@ -24,9 +25,10 @@ export const keySearchListAction = createAction("LIST_TYPES",(val)=>val)
 // 异步的请求
 export const keySearchListAsyncAction = (val)=>{
     return async (dispatch)=>{ 
-        let data = await searchKey_api(val);
-        console.log(data)
+        let data = await searchKey_api(val); 
+        console.log(data,"searchList")
        // dispatch(keySearchListAction(data))
     }
-}
- 
+} 
+export const carSumAction = createAction("CAR_TYPES",(val)=>val)
+export const carJAction = createAction("CARJ_TYPES",(val)=>val)

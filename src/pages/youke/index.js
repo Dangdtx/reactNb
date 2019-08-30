@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { Page } from "./styled"
 import { Cate } from "@api/home"
-import {Link} from "react-router-dom"
 // import {connect} from "react-redux";
 // import {mapStateToProps,mapDispatchToProps} from "./connect";
 import BScrollComponent from "@common/bscroll"
 export default class Youke extends Component {
     constructor(){
     super();
-   this.state = {
+   this. state = {
         weekGoods: [],
+        weekGoods1:[],
         Goods:[],
         id: 1,
         flag:false,
@@ -18,6 +18,7 @@ export default class Youke extends Component {
     
 }
     render() {
+        this.num=1;
         let { weekGoods , Goods,flag, bom} = this.state;
         
         return (
@@ -25,16 +26,16 @@ export default class Youke extends Component {
                 <Page>
 
                     <div className="header">
-                        <b className="left">
-                            <Link className="icon" to="/home">&lt;</Link>
+                        <a className="left">
+                            <span className="icon">&lt;</span>
                             <span>手机</span>
-                        </b>
+                        </a>
                     </div>
                     <div className="product_sorting">
                         <ul>
                             <li>综合</li>
                             <li>价格
-                        <span>0</span>
+                        <span onClick={this.handleClick4.bind(this)}>0</span>
                             </li>
                             <li onClick={this.handleClick.bind(this)}>筛选
                         <span>0</span>
@@ -44,32 +45,33 @@ export default class Youke extends Component {
                             </li>
                         </ul>
                     </div>
-                            {
-                                weekGoods.map((item, index) => {
-                                    return <Link to={"/goodsDetail/"+item.id +"/" + item.sid} className="wrap" key={index}>
-                                        <ul>
-                                            <li className="phone-item">
-                                                
-                                                    <div className="phone_cell">
-                                                        <img src={'//oss.static.nubia.cn/' + item.image} />
-                                                    </div>
-                                                    <div className="phone_desc">
-                                                        <div className="title">
-                                                            <h3>
-                                                                {item.product_name + " " + item.color_name + " " + item.spec_value}
-                                                            </h3>
+                    {
+                        weekGoods.map((item, index) => {
+                            return <div className="wrap" key={index}>
+                                <ul>
+                                    <li className="phone-item">
+                                        <a>
+                                            <div className="phone_cell">
+                                                <img src={'//oss.static.nubia.cn/' + item.image} />
+                                            </div>
+                                            <div className="phone_desc">
+                                                <div className="title">
+                                                    <h3>
+                                                        {item.product_name + " " + item.color_name + " " + item.spec_value}
+                                                    </h3>
 
-                                                        </div>
-                                                        <div className="price">
-                                                            <h4>{"￥" + item.origin_price}</h4>
-                                                        </div>
-                                                    </div> 
-                                            </li>
-                                        </ul>
-                                    </Link>
-                                })
+                                                </div>
+                                                <div className="price">
+                                                    <h4>{"￥" + item.origin_price}</h4>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        })
 
-                            }
+                    }
                     <div className="right" style={{display:flag?"block":"none"}}>
                     <div className="left_in" onClick={this.handleClick1.bind(this)}></div>
                     <div className="right_in">
@@ -109,7 +111,7 @@ export default class Youke extends Component {
                        {
                         Goods.map((it, index1) => {
                             
-                            return  <li key={index1}><Link to={"/goodsDetail/"+it.id +"/" + it.sid}>
+                            return  <li key={index1}>
                         <div className="box2">
                         <img src={'//oss.static.nubia.cn/' + it.image}/>
                         </div>
@@ -124,8 +126,7 @@ export default class Youke extends Component {
                              <span>{"￥" + it.origin_price}</span>
                             </div>
                         </div>
-                      </Link>  </li>
-                        
+                        </li>
                     })
                 }
                        </ul>
@@ -143,7 +144,7 @@ export default class Youke extends Component {
         })
     }
     handleClick1(){
-        
+        let val = this.state.flag
         this.setState({
             flag:false
         })
@@ -155,24 +156,49 @@ export default class Youke extends Component {
             
         })
     }
-    async componentDidMount(){
-
-        let data = await Cate();
+   async handleClick4(){
+       
+        let data = await Cate(3);
+        
         this.setState({
             weekGoods:data.data.result
             
         })
+        console.log(data,111)
+    }
+    async componentDidMount(){
+
+        // let data = await Cate(0,this.num);
+        // if(data){
+        //     this.setState({
+        //         weekGoods:data.data.result
+                
+        //     })
+        //     this.num++;
+        // }
+        this.handleWeekGetData();
         let data1 = await Cate();
         this.setState({
             Goods:data1.data.result
             
         })
-        console.log(data.data.result)
+        // console.log(data.data.result)
 
         this.refs.bscroll.handlepullingUp(()=>{
-            alert(1);
-
+            this.handleWeekGetData();
+            
         })
+    }
+    async handleWeekGetData(){
+        let data = await Cate(0,this.num);
+        console.log(data)
+        if(data){
+            this.setState({
+                weekGoods:data.data.result,
+                num:++this.num
+            })
+           
+        }
     }
     // async componentDidMount() {
     //     let { id } = this.state;

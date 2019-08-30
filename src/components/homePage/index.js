@@ -21,7 +21,9 @@ import {Link,withRouter}   from "react-router-dom"
     }
     render() {
         let {goods,sanBai ,list,three,four,seven,eight,five,banner} = this.state; 
+        console.log(banner)
         return ( 
+            <BScrollComponent>
             <HomeContent>  
                 <div className="banner"> 
                     <Carousel autoplay>
@@ -125,6 +127,7 @@ import {Link,withRouter}   from "react-router-dom"
                 <Service/>
                 <Footer/>
             </HomeContent> 
+            </BScrollComponent>
         )
     }
     async componentDidMount(){ 

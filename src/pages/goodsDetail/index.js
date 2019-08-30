@@ -2,33 +2,45 @@ import React, { PureComponent } from "react"
 import {SelectedProjectBody,SelectedProjectButton,SelectedProjectNum,SelectedProjectinstallment,SelectedProjectService,SelectedProjectsuit,SelectedProjectSpecifications,SelectedProjectColor,SelectedProjectHeader, SelectedProject,Footer, Parameter, Overview, OverviewParameterNav, GoodsDetailOverviewParameter, Choiced, Sales, GoodsDetailSales, GoodsDetail, GoodsDetailImg, GoodsDetailInf } from "./styled"
 import logo2 from "@static/2.png"
 import { goodsDetail_api } from "@api/home"
+import { Carousel } from 'antd'; 
+import "antd/dist/antd.css" 
 export default class GoodsDetailWrapper extends PureComponent {
     constructor() {
         super();
         this.state = {
             msg: {},
             lgs:[],
+            banner:[],
             flag:false
         }
     }
     render() {
-        let {msg,lgs,flag} = this.state;
+        let {msg,lgs,flag,banner} = this.state;
         let id = this.props.match.params.id
-        
+        console.log(banner)
         let num;
         lgs.forEach((item,index)=>{
                         if(item.id==id) {
                            num=index;
                         }
                     })
-        let tibel=lgs[num]
-        console.log(tibel,"111111111111111saamsg")
+        let tibel=lgs[num] 
       
         return (
          
             <GoodsDetail>
                 <GoodsDetailImg  onClick={this.clickOtherHandler.bind(this)}>
-                    <img src={logo2} alt=""></img>
+                    <Carousel autoplay>
+                        {
+                            banner.map((item,index)=>(
+                                <div key={index}>
+                                <h3><a key={index}   >
+                                    <img  src={"//oss.static.nubia.cn/"+ item } alt=""/>
+                                </a></h3>
+                                </div>
+                            ))  
+                        }  
+                    </Carousel> 
                 </GoodsDetailImg>
 
 
@@ -204,11 +216,14 @@ export default class GoodsDetailWrapper extends PureComponent {
 
     async componentDidMount() {
        let {productId,id} = this.props.match.params
+      
         let value = await goodsDetail_api(productId,id);
+        console.log(value, 66666)
         let data = value.data
         this.setState({
             msg: data,
-            lgs:data.product_specs
+            lgs:data.product_specs,
+            banner:data.product_specs[0].images,
         })
     }
 

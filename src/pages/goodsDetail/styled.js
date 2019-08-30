@@ -10,10 +10,28 @@ export const GoodsDetailImg = styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
-    img {
-        width:7.5rem;
-        height:7.5rem;
+    .ant-carousel{
+        width:100%;
+        
     }
+    .ant-carousel .slick-slide {
+        width:100%;
+        text-align: center;
+        height: 100%; 
+        background: #364d79;
+        overflow: hidden;
+
+    }
+
+    .ant-carousel .slick-slide h3 { 
+        width:100%;
+        height:100%;
+        img{ 
+            width:100%;
+            height:100%;
+        }
+     }
+    
 `
 
 export const GoodsDetailInf = styled.div`

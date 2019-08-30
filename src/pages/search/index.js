@@ -1,7 +1,7 @@
 import React, { Component } from 'react' 
 import {HeadersWrapper} from "./styled"
-import {connect} from "react-redux"
-import {Page} from "@common/commonStyled"
+import {connect} from "react-redux" 
+import {Link} from "react-router-dom"
 import {mapStateToProps, mapDispatchToProps} from "./connect"
  class Search extends Component {
      state={
@@ -32,7 +32,7 @@ import {mapStateToProps, mapDispatchToProps} from "./connect"
                     <ul>
                         {
                             hotGoods.map((item,index)=>(
-                                <li key={index}><a href="">{item.product_name}</a></li>
+                                <li key={index}><Link key={index} to={"/goodsDetail/i/"+item.product_id} >{item.product_name}</Link></li>
                             ))
                             
                         }

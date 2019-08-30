@@ -1,10 +1,11 @@
 import React, { Component } from "react"
 import logo1 from "@static/3.png"
 import logo4 from "@static/4.png"
-
+import {connect} from "react-redux"
 import { list_api } from "@api/home"
+import {mapStateToProps,mapDispatchToProps}  from "./connect"
 import { RecommonedList, Recommoned, PriceTotal, ShoppingWrapperList, ListHeader, ShoppingWrapper } from "./styled"
-export default class ShoppingList extends Component {
+ class ShoppingList extends Component {
     constructor() {
         super();
         this.state = {
@@ -13,6 +14,8 @@ export default class ShoppingList extends Component {
     }
     render() {
         let { msg } = this.state;
+        let {num,sum,dan} =this.props
+        console.log(sum,333)
         return (
             <ShoppingWrapper>
                 <ListHeader>
@@ -29,12 +32,12 @@ export default class ShoppingList extends Component {
                         <div className="soldPrice"><span>售价</span>￥<span>2999</span>元</div>
                         <div className="numPriceTotal">
                             <div className="shoppingListInfNum">
-                                <div>-</div>
-                                <span>1</span>
-                                <div>+</div>
+                                <div onClick={this.props.handleCarJ.bind(this)}>-</div>
+                                <span>{num}</span>
+                                <div onClick={this.props.handleCarSum.bind(this)} >+</div>
                             </div>
                             <div className="shoppingListInfPriceTotal">
-                                <span>小计:</span>￥<span>2999.00</span>元
+                                <span>小计:</span>￥<span>{dan}</span>元
                             </div>
 
                         </div>
@@ -45,7 +48,7 @@ export default class ShoppingList extends Component {
                 <PriceTotal>
 
                     <div>金额合计</div>
-                    <div>￥<span>2999</span>元</div>
+                    <div>￥<span>{sum}</span>元</div>
                 </PriceTotal>
 
                 <Recommoned>为您推荐</Recommoned>
@@ -90,3 +93,6 @@ export default class ShoppingList extends Component {
     }
 
 }
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(ShoppingList)
