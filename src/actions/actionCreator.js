@@ -29,4 +29,18 @@ export const keySearchListAsyncAction = (val)=>{
        // dispatch(keySearchListAction(data))
     }
 }
+
+
+
+export const goodsDetailAction = createAction("GOODS_DETAIL",(val)=>val)
+export const goodsDetailAsyncAction = (productId,id)=>{
+    return async (dispatch) =>{
+        let data = await goodsDetail_api(productId,id);
+        dispatch(goodsDetailAction(data))
+    }
+}
  
+
+
+
+export const updateCityIdAction = createAction("GOODS_ID",(val)=>val)

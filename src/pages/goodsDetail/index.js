@@ -1,20 +1,15 @@
-import React, { PureComponent } from "react"
+import React, { Component } from "react"
 import {SelectedProjectBody,SelectedProjectButton,SelectedProjectNum,SelectedProjectinstallment,SelectedProjectService,SelectedProjectsuit,SelectedProjectSpecifications,SelectedProjectColor,SelectedProjectHeader, SelectedProject,Footer, Parameter, Overview, OverviewParameterNav, GoodsDetailOverviewParameter, Choiced, Sales, GoodsDetailSales, GoodsDetail, GoodsDetailImg, GoodsDetailInf } from "./styled"
 import logo2 from "@static/2.png"
-import { goodsDetail_api,shopping_detail_api } from "@api/home"
-export default class GoodsDetailWrapper extends PureComponent {
-    constructor() {
-        super();
-        this.state = {
-            msg: {},
-            lgs:[],
-            flag:false
-        }
-    }
+import {connect} from "react-redux"
+import {mapStateToProps,mapDispatchToProps} from "./connect"
+class GoodsDetailWrapper extends Component {
+   
     render() {
-        let {msg,lgs,flag} = this.state;
+        let {msg,lgs,flag,goodsId,goodsName,goodsPrice,goodsList} = this.props;
+        
         let id = this.props.match.params.id
-       
+      
         
         let num;
         lgs.forEach((item,index)=>{
@@ -23,23 +18,23 @@ export default class GoodsDetailWrapper extends PureComponent {
                         }
                     })
         let tibel=lgs[num]
-        console.log(tibel,"111111111111111saamsg")
+     
        
         return (
          
             <GoodsDetail>
-                <GoodsDetailImg  onClick={this.clickOtherHandler.bind(this)}>
+                <GoodsDetailImg  onClick={this.props.clickOtherHandler.bind(this)}>
                     <img src={logo2} alt=""></img>
                 </GoodsDetailImg>
 
 
                 <GoodsDetailInf>
-                    <h2>{msg?msg.product_name:""} {tibel?tibel.color_name:''}{tibel?tibel.spec_value:''}</h2>
+                    <h2>{goodsList?goodsList.color_name:""}  {goodsList?goodsList.spec_value:""}</h2>
                            <div>
-                                <div>{tibel?tibel.sale_point:''}</div>
+                                <div></div>
                                 <div>
-                                <span>￥{tibel?tibel.price:''}元</span>
-                                <span>￥{tibel?tibel.origin_price:''}元</span>
+                                <span>￥{goodsList?goodsList.price:''}元</span>
+                                <span>￥{goodsList?goodsList.origin_price:''}元</span>
                                 </div>
                            </div>
                 </GoodsDetailInf>
@@ -60,7 +55,7 @@ export default class GoodsDetailWrapper extends PureComponent {
                             </li>
                         </ul>
                     </Sales>
-                    <Choiced onClick={this.clickHandler.bind(this)}>
+                    <Choiced onClick={this.props.clickHandler.bind(this)}>
                         <div>已选</div>
                         <span>赤焰红 8GB+12GB 仅手机 x <span>1</span></span>
                     </Choiced>
@@ -175,10 +170,6 @@ export default class GoodsDetailWrapper extends PureComponent {
                         
                         </SelectedProjectButton>
 
-
-                          
-                        
-                        
                         </SelectedProjectBody>
                     
                     </SelectedProject>
@@ -200,34 +191,17 @@ export default class GoodsDetailWrapper extends PureComponent {
                     <li>
                         <span className="iconfont">缺货登记</span>
                     </li>
-
-
                 </Footer>
-
             </GoodsDetail>
         )
     }
 
-    async componentDidMount() {
-       let {productId,id} = this.props.match.params
-        let value = await goodsDetail_api(productId,id);
-        let data = value.data
-        this.setState({
-            msg: data,
-            lgs:data.product_specs
-        })
-    }
+    componentDidMount() {
+        let {productId,id} = this.props.match.params;
 
-    clickHandler(e) {
-        e.stopPropagation();
-        this.setState({
-            flag:true
-        })
-    }
-    clickOtherHandler(e) {
-        e.stopPropagation();
-        this.setState({
-            flag:false
-        })
+        this.props.handleGetGoodsDetailTypes(productId,id);   
+        this.props.handleUpdateCityId(id)  
     }
 }
+
+export default connect(mapStateToProps,mapDispatchToProps)(GoodsDetailWrapper)
