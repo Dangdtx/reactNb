@@ -12,7 +12,7 @@
 - `better-scroll`
 
 ```javascript
-    yarn add react-router-dom  redux   react-redux  redux-action  react-thunk  styled-components  react-loadable  whatwg-fetch qs better-scroll
+    yarn add react-router-dom  redux   react-redux  redux-actions react-thunk  styled-components  react-loadable  whatwg-fetch qs better-scroll antd
 ```
 
 

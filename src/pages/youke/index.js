@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Page } from "./styled"
 import { Cate } from "@api/home"
+import {Link} from "react-router-dom"
 // import {connect} from "react-redux";
 // import {mapStateToProps,mapDispatchToProps} from "./connect";
 import BScrollComponent from "@common/bscroll"
@@ -27,7 +28,7 @@ export default class Youke extends Component {
 
                     <div className="header">
                         <a className="left">
-                            <span className="icon">&lt;</span>
+                        <Link className="icon" to="/home">&lt;</Link>
                             <span>手机</span>
                         </a>
                     </div>
@@ -49,6 +50,7 @@ export default class Youke extends Component {
                         weekGoods.map((item, index) => {
                             return <div className="wrap" key={index}>
                                 <ul>
+                                <Link to={"/goodsDetail/"+item.id+"/"+item.sid }>
                                     <li className="phone-item">
                                         <a>
                                             <div className="phone_cell">
@@ -67,6 +69,7 @@ export default class Youke extends Component {
                                             </div>
                                         </a>
                                     </li>
+                                    </Link>
                                 </ul>
                             </div>
                         })
@@ -110,8 +113,8 @@ export default class Youke extends Component {
                        <ul>
                        {
                         Goods.map((it, index1) => {
-                            
-                            return  <li key={index1}>
+                          return   <li key={index1}>
+                          <Link to={"/goodsDetail/"+it.id+"/"+it.sid }>
                         <div className="box2">
                         <img src={'//oss.static.nubia.cn/' + it.image}/>
                         </div>
@@ -126,6 +129,7 @@ export default class Youke extends Component {
                              <span>{"￥" + it.origin_price}</span>
                             </div>
                         </div>
+                        </Link>
                         </li>
                     })
                 }
